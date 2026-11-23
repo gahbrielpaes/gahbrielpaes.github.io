@@ -3,552 +3,1673 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gabriel Michell Paes — Currículo</title>
+  <title>Gabriel Michell Paes — Portfólio Netflix Style</title>
+  <meta name="description" content="Portfólio profissional de Gabriel Michell Paes — Gestão, Comunicação, Avaliação de Ferramentas de IA" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    /* ===== CSS RESET & VARIABLES ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue: #2783DE;
-      --blue-soft: #E5F2FC;
-      --text: #2C2C2B;
-      --secondary: #7D7A75;
-      --canvas: #FFFFFF;
-      --surface: #F9F8F7;
-      --surface2: #F0EFED;
-      --border: #E6E5E3;
-      --radius: 8px;
+      /* Color Palette - Blue Primary with Gold/Yellow Accents (Netflix-style Dark) */
+      --bg-black: #0a0a0f;
+      --bg-dark: #0f0f1a;
+      --bg-card: #151525;
+      --bg-card-hover: #1d1d35;
+      --bg-elevated: #1e1e35;
+
+      --primary-blue: #1e90ff;
+      --primary-blue-hover: #3a9eff;
+      --primary-blue-dim: rgba(30, 144, 255, 0.12);
+      --primary-blue-glow: rgba(30, 144, 255, 0.4);
+
+      --accent-gold: #ffd700;
+      --accent-gold-hover: #ffe033;
+      --accent-gold-dim: rgba(255, 215, 0, 0.12);
+      --accent-gold-glow: rgba(255, 215, 0, 0.4);
+
+      --accent-amber: #ffb800;
+      --accent-amber-dim: rgba(255, 184, 0, 0.12);
+
+      --text-white: #ffffff;
+      --text-gray-1: #e8e8f0;
+      --text-gray-2: #b8b8d0;
+      --text-gray-3: #8888a0;
+      --text-gray-4: #5a5a7a;
+      --text-gray-5: #3a3a5a;
+
+      --border-subtle: #2a2a4a;
+      --border-muted: #3a3a5a;
+
+      /* Typography */
+      --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      --font-size-xs: 0.7rem;
+      --font-size-sm: 0.8125rem;
+      --font-size-base: 0.9375rem;
+      --font-size-md: 1rem;
+      --font-size-lg: 1.125rem;
+      --font-size-xl: 1.5rem;
+      --font-size-2xl: 2rem;
+      --font-size-3xl: 2.5rem;
+      --font-size-4xl: 3.5rem;
+
+      /* Spacing */
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+      --space-3xl: 64px;
+
+      /* Border Radius */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-full: 9999px;
+
+      /* Transitions */
+      --transition-fast: 150ms ease;
+      --transition-base: 250ms ease;
+      --transition-slow: 350ms ease;
+
+      /* Shadows */
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 32px var(--primary-blue-glow);
+      --shadow-gold-glow: 0 0 32px var(--accent-gold-glow);
+    }
+
+    /* ===== BASE STYLES ===== */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      background: var(--surface);
-      color: var(--text);
-      font-size: 16px;
+      font-family: var(--font-primary);
+      background: var(--bg-black);
+      color: var(--text-white);
+      font-size: var(--font-size-base);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* ── HERO ── */
-    .hero {
-      background: linear-gradient(135deg, #1a5fa8 0%, #2783DE 60%, #4fa3f0 100%);
-      color: #fff;
-      padding: 64px 24px;
-      text-align: center;
+    a {
+      color: var(--text-white);
+      text-decoration: none;
+      transition: color var(--transition-fast);
     }
-    .hero-inner {
-      max-width: 760px;
+    a:hover { color: var(--primary-blue); }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Focus visible for accessibility */
+    :focus-visible {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 2px;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-black); }
+    ::-webkit-scrollbar-thumb { background: var(--border-muted); border-radius: var(--radius-full); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-gray-4); }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: 1400px;
       margin: 0 auto;
+      padding: 0 var(--space-lg);
     }
-    .hero-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      border: 3px solid rgba(255,255,255,0.6);
-      overflow: hidden;
-      background: rgba(255,255,255,0.2);
+
+    .section {
+      padding: var(--space-2xl) 0;
     }
-    .hero-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-lg);
+      padding: 0 var(--space-sm);
     }
-    .hero h1 {
-      font-size: 2.4rem;
+
+    .section-title {
+      font-size: var(--font-size-xl);
       font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg, var(--text-white) 0%, var(--text-gray-2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .hero-title {
-      font-size: 1.05rem;
-      opacity: 0.88;
-      margin-bottom: 24px;
+
+    .section-subtitle {
+      font-size: var(--font-size-sm);
+      color: var(--text-gray-2);
       font-weight: 400;
     }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: var(--space-3xl) 0;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, var(--primary-blue-dim) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 20%, var(--accent-gold-dim) 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg-black) 0%, var(--bg-dark) 50%, var(--bg-black) 100%);
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-xl);
+      }
+    }
+
+    /* Hero Left - Text Content */
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-xs) var(--space-md);
+      background: var(--primary-blue-dim);
+      border: 1px solid rgba(30, 144, 255, 0.3);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      color: var(--primary-blue);
+      width: fit-content;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--primary-blue);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.9); }
+    }
+
+    .hero-name {
+      font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      animation: fadeInUp 0.6s ease 0.1s forwards;
+      opacity: 0;
+    }
+
+    .hero-name span {
+      background: linear-gradient(90deg, var(--text-white) 0%, var(--primary-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title {
+      font-size: clamp(var(--font-size-lg), 2.5vw, var(--font-size-xl));
+      font-weight: 400;
+      color: var(--text-gray-1);
+      line-height: 1.4;
+      animation: fadeInUp 0.6s ease 0.2s forwards;
+      opacity: 0;
+    }
+
+    .hero-description {
+      font-size: var(--font-size-md);
+      color: var(--text-gray-2);
+      line-height: 1.7;
+      max-width: 500px;
+      animation: fadeInUp 0.6s ease 0.3s forwards;
+      opacity: 0;
+    }
+
+    @media (max-width: 900px) {
+      .hero-description { max-width: 100%; }
+    }
+
+    /* Hero Contacts */
     .hero-contacts {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      font-size: 0.9rem;
-      margin-bottom: 24px;
+      gap: var(--space-sm);
+      margin-top: var(--space-sm);
+      animation: fadeInUp 0.6s ease 0.4s forwards;
+      opacity: 0;
     }
-    .hero-contacts a, .hero-contacts span {
-      color: #fff;
-      opacity: 0.9;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 20px;
-      padding: 6px 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: background 0.2s;
-    }
-    .hero-contacts a:hover { background: rgba(255,255,255,0.25); text-decoration: none; }
 
-    .btn-download-pdf {
+    @media (max-width: 900px) {
+      .hero-contacts { justify-content: center; }
+    }
+
+    .contact-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: #ffffff;
-      color: #1a5fa8 !important;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border-muted);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      color: var(--text-gray-1);
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .contact-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--primary-blue);
+      color: var(--primary-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-btn:focus-visible {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 2px;
+    }
+
+    .contact-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    .contact-btn.primary {
+      background: var(--primary-blue);
+      border-color: var(--primary-blue);
+      color: var(--text-white);
+      padding: var(--space-md) var(--space-xl);
+      font-size: var(--font-size-base);
       font-weight: 600;
-      padding: 10px 22px;
-      border-radius: 24px;
-      font-size: 0.92rem;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .btn-download-pdf:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
     }
 
-    /* ── LAYOUT ── */
-    .page {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 48px 24px;
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 32px;
-      align-items: start;
-    }
-    @media (max-width: 700px) {
-      .page { grid-template-columns: 1fr; padding: 32px 16px; }
+    .contact-btn.primary:hover {
+      background: var(--primary-blue-hover);
+      border-color: var(--primary-blue-hover);
+      color: var(--text-white);
+      box-shadow: var(--shadow-glow);
     }
 
-    /* ── CARD ── */
-    .card {
-      background: var(--canvas);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 32px;
-      margin-bottom: 24px;
-    }
-    .card:last-child { margin-bottom: 0; }
-
-    .section-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 20px;
+    /* Hero Right - Avatar Card */
+    .hero-avatar-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInRight 0.8s ease 0.2s forwards;
+      opacity: 0;
     }
 
-    /* ── PROFILE ── */
-    .profile-text {
-      color: var(--secondary);
-      font-size: 0.97rem;
-      line-height: 1.7;
+    @media (max-width: 900px) {
+      .hero-avatar-wrapper { order: -1; }
     }
-    .profile-text + .profile-text { margin-top: 12px; }
 
-    /* ── EXPERIENCE ── */
-    .exp-list { list-style: none; }
-    .exp-item {
+    .hero-avatar-card {
       position: relative;
-      padding-left: 20px;
-      padding-bottom: 28px;
-      border-left: 2px solid var(--border);
+      width: 320px;
+      height: 320px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+      border: 1px solid var(--border-muted);
+      box-shadow: var(--shadow-lg);
     }
-    .exp-item:last-child { padding-bottom: 0; border-left-color: transparent; }
-    .exp-item::before {
+
+    .hero-avatar-card::before {
       content: '';
       position: absolute;
-      left: -5px;
-      top: 6px;
-      width: 8px;
-      height: 8px;
+      inset: -2px;
+      border-radius: calc(var(--radius-xl) + 2px);
+      background: conic-gradient(from 0deg, var(--primary-blue), var(--accent-gold), var(--primary-blue));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity var(--transition-base);
+      animation: rotateBorder 6s linear infinite;
+    }
+
+    .hero-avatar-card:hover::before {
+      opacity: 1;
+    }
+
+    @keyframes rotateBorder {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hero-avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .hero-avatar-card:hover .hero-avatar {
+      transform: scale(1.05);
+    }
+
+    .hero-avatar-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      background: linear-gradient(135deg, var(--border-muted) 0%, var(--text-gray-4) 100%);
+      color: var(--text-gray-2);
+    }
+
+    .hero-avatar-fallback svg { width: 80px; height: 80px; opacity: 0.5; }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ===== CAROUSEL COMPONENT ===== */
+    .carousel {
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: var(--space-md);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: var(--space-sm) var(--space-sm) var(--space-lg);
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-muted) transparent;
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .carousel-track::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .carousel-track::-webkit-scrollbar-thumb {
+      background: var(--border-muted);
+      border-radius: var(--radius-full);
+    }
+
+    .carousel-card {
+      flex: 0 0 300px;
+      scroll-snap-align: start;
+      background: var(--bg-card);
+      border: 1px solid var(--border-muted);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      transition: all var(--transition-base);
+      position: relative;
+    }
+
+    .carousel-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--text-gray-4);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .carousel-card.featured {
+      flex-basis: 380px;
+      border-color: var(--primary-blue);
+      background: linear-gradient(135deg, var(--primary-blue-dim) 0%, var(--bg-card) 100%);
+    }
+
+    .carousel-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue) 0%, transparent 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    /* Carousel Navigation Buttons */
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: var(--blue);
+      background: var(--bg-card);
+      border: 1px solid var(--border-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-white);
+      opacity: 0;
+      transition: all var(--transition-fast);
+      z-index: 10;
     }
-    .exp-role {
+
+    .carousel:hover .carousel-nav {
+      opacity: 1;
+    }
+
+    .carousel-nav:hover {
+      background: var(--primary-blue);
+      border-color: var(--primary-blue);
+      color: var(--text-white);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .carousel-nav.prev { left: -24px; }
+    .carousel-nav.next { right: -24px; }
+
+    .carousel-nav svg { width: 24px; height: 24px; }
+
+    @media (max-width: 768px) {
+      .carousel-nav { display: none; }
+      .carousel-card { flex-basis: 280px; }
+      .carousel-card.featured { flex-basis: 340px; }
+    }
+
+    /* ===== CARD CONTENT STYLES ===== */
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--primary-blue-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-md);
+      color: var(--primary-blue);
+    }
+
+    .card-icon svg { width: 24px; height: 24px; }
+
+    .card-tag {
+      display: inline-block;
+      font-size: var(--font-size-xs);
       font-weight: 600;
-      font-size: 0.97rem;
-      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary-blue);
+      margin-bottom: var(--space-sm);
     }
-    .exp-company {
-      color: var(--blue);
-      font-size: 0.88rem;
-      font-weight: 500;
-      margin-top: 2px;
+
+    .card-title {
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+      line-height: 1.3;
     }
-    .exp-period {
-      color: var(--secondary);
-      font-size: 0.82rem;
-      margin-top: 2px;
-      margin-bottom: 6px;
+
+    .card-subtitle {
+      font-size: var(--font-size-sm);
+      color: var(--text-gray-2);
+      font-weight: 400;
+      margin-bottom: var(--space-xs);
     }
-    .exp-desc {
-      color: var(--secondary);
-      font-size: 0.88rem;
+
+    .card-period {
+      font-size: var(--font-size-xs);
+      color: var(--text-gray-3);
+      margin-bottom: var(--space-md);
+    }
+
+    .card-description {
+      font-size: var(--font-size-sm);
+      color: var(--text-gray-2);
       line-height: 1.6;
     }
 
-    /* ── SIDEBAR CARDS ── */
-    .skill-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .skill-item {
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 12px 14px;
-    }
-    .skill-name {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .skill-desc {
-      font-size: 0.8rem;
-      color: var(--secondary);
-      margin-top: 3px;
-      line-height: 1.5;
+    .card-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--border-muted) 50%, transparent 100%);
+      margin: var(--space-md) 0;
     }
 
-    .tag-list {
+    /* ===== EXPERIENCE CARDS ===== */
+    .exp-card .card-icon { background: var(--primary-blue-dim); }
+    .exp-card.current { border-color: var(--primary-blue); }
+    .exp-card.current .card-icon { background: var(--primary-blue-dim); }
+
+    /* ===== SKILL CARDS ===== */
+    .skill-card {
+      flex-basis: 260px;
+      text-align: left;
+    }
+
+    .skill-card .card-icon { background: var(--primary-blue-dim); }
+    .skill-card .card-title { font-size: var(--font-size-md); }
+    .skill-card .card-description { font-size: var(--font-size-sm); }
+
+    /* ===== TOOL TAGS ===== */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .tool-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border-muted);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      color: var(--text-gray-1);
+      transition: all var(--transition-fast);
+    }
+
+    .tool-tag:hover {
+      background: var(--primary-blue-dim);
+      border-color: var(--primary-blue);
+      color: var(--primary-blue);
+      transform: translateY(-2px);
+    }
+
+    .tool-tag.ai-tool {
+      border-color: var(--accent-gold);
+      background: var(--accent-gold-dim);
+      color: var(--accent-gold);
+    }
+
+    .tool-tag.ai-tool:hover {
+      background: var(--accent-gold);
+      color: var(--bg-black);
+    }
+
+    /* ===== EDUCATION CARDS ===== */
+    .edu-card {
+      flex-basis: 280px;
+      border-left: 3px solid var(--border-muted);
+      transition: all var(--transition-base);
+    }
+
+    .edu-card:hover {
+      border-left-color: var(--primary-blue);
+      background: var(--bg-card-hover);
+    }
+
+    .edu-card .card-icon { background: var(--primary-blue-dim); }
+
+    /* ===== LANGUAGE CARDS ===== */
+    .lang-card {
+      flex-basis: 200px;
+      text-align: center;
+    }
+
+    .lang-card .card-icon {
+      margin: 0 auto var(--space-md);
+      background: var(--primary-blue-dim);
+    }
+
+    .lang-level {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-top: var(--space-sm);
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--primary-blue-dim);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      color: var(--primary-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== RECOMMENDATION LETTERS ===== */
+    .letters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    @media (max-width: 900px) {
+      .letters-grid { grid-template-columns: 1fr; }
+    }
+
+    .letter-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-muted);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      position: relative;
+      transition: all var(--transition-base);
+    }
+
+    .letter-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--text-gray-4);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .letter-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-gold) 50%, var(--primary-blue) 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .letter-header {
+      display: flex;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--border-muted);
+    }
+
+    .letter-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-gold) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: var(--font-size-md);
+      color: var(--bg-black);
+      flex-shrink: 0;
+    }
+
+    .letter-meta h4 {
+      font-size: var(--font-size-md);
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+    }
+
+    .letter-meta .letter-role {
+      font-size: var(--font-size-sm);
+      color: var(--text-gray-2);
+      font-weight: 400;
+      margin-bottom: var(--space-xs);
+    }
+
+    .letter-meta .letter-date {
+      font-size: var(--font-size-xs);
+      color: var(--text-gray-3);
+    }
+
+    .letter-content {
+      font-size: var(--font-size-sm);
+      color: var(--text-gray-1);
+      line-height: 1.8;
+    }
+
+    .letter-content p {
+      margin-bottom: var(--space-md);
+    }
+
+    .letter-content strong { color: var(--text-white); }
+
+    .letter-footer {
+      margin-top: var(--space-lg);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--border-muted);
+      font-size: var(--font-size-xs);
+      color: var(--text-gray-3);
+    }
+
+    .letter-footer a { color: var(--text-gray-2); }
+    .letter-footer a:hover { color: var(--primary-blue); }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border-muted);
+      padding: var(--space-2xl) 0 var(--space-lg);
+    }
+
+    .footer-content {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tag {
-      background: var(--blue-soft);
-      color: var(--blue);
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 0.82rem;
-      font-weight: 500;
-    }
-
-    .edu-item {
-      margin-bottom: 16px;
-    }
-    .edu-item:last-child { margin-bottom: 0; }
-    .edu-degree {
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-    .edu-institution {
-      color: var(--blue);
-      font-size: 0.84rem;
-      margin-top: 2px;
-    }
-    .edu-period {
-      color: var(--secondary);
-      font-size: 0.8rem;
-      margin-top: 1px;
-    }
-
-    .lang-item {
-      display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
-    }
-    .lang-item:last-child { border-bottom: none; }
-    .lang-level {
-      color: var(--secondary);
-      font-size: 0.82rem;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
     }
 
-    /* ── FOOTER ── */
-    footer {
+    .footer-brand {
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--text-white) 0%, var(--primary-blue) 50%, var(--accent-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-xs) var(--space-sm);
+      font-size: var(--font-size-sm);
+      color: var(--text-gray-2);
+      border-radius: var(--radius-sm);
+      transition: color var(--transition-fast);
+    }
+
+    .footer-link:hover { color: var(--primary-blue); }
+
+    .footer-bottom {
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border-muted);
       text-align: center;
-      padding: 32px 24px;
-      color: var(--secondary);
-      font-size: 0.82rem;
-      border-top: 1px solid var(--border);
+      font-size: var(--font-size-xs);
+      color: var(--text-gray-3);
     }
 
+    /* ===== BACK TO TOP ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: var(--space-xl);
+      right: var(--space-xl);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--primary-blue);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-white);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all var(--transition-base);
+      z-index: 100;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--primary-blue-hover);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .back-to-top svg { width: 24px; height: 24px; }
+
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-avatar-card::before { animation: none; }
+      .hero-badge::before { animation: none; }
+      .carousel-card, .contact-btn, .tool-tag, .letter-card,
+      .exp-card, .skill-card, .edu-card, .lang-card,
+      .hero-avatar, .back-to-top {
+        transition: none !important;
+      }
+    }
+
+    /* ===== PRINT STYLES ===== */
     @media print {
-      .hero { padding: 40px 24px; }
-      .page { padding: 24px; }
-      .card { break-inside: avoid; }
-      .btn-download-pdf { display: none; }
+      .hero { min-height: auto; padding: var(--space-xl) 0; }
+      .hero::before, .hero::after { display: none; }
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-avatar-wrapper { display: none; }
+      .contact-btn.primary { display: none; }
+      .carousel-nav, .back-to-top { display: none; }
+      .carousel-track { overflow: visible; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
+      .carousel-card { flex: none; break-inside: avoid; }
+      .section { page-break-inside: avoid; }
+      body { background: white; color: black; }
+      .hero-name, .hero-title, .hero-description,
+      .section-title, .card-title, .card-subtitle,
+      .card-description, .letter-content, .letter-footer {
+        -webkit-text-fill-color: initial !important;
+        color: black !important;
+      }
+      .card-icon, .contact-btn, .tool-tag, .lang-level,
+      .letter-avatar, .letter-card::before {
+        background: #f0f0f0 !important;
+        color: black !important;
+        border-color: #ddd !important;
+      }
+      .letter-card, .carousel-card { border: 1px solid #ddd !important; box-shadow: none !important; }
     }
   </style>
 </head>
 <body>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-inner">
-    <div class="hero-avatar">
-      <img src="foto.jpg" alt="Gabriel Michell Paes" onerror="this.style.display='none'" />
-    </div>
-    <h1>Gabriel Michell Paes</h1>
-    <p class="hero-title">Gestão · Comunicação · Avaliação de Ferramentas de IA</p>
-    <div class="hero-contacts">
-      <a href="mailto:gabrielmichellpaes@gmail.com">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        gabrielmichellpaes@gmail.com
-      </a>
-      <a href="https://api.whatsapp.com/send?phone=5531984850095" target="_blank" rel="noopener noreferrer">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 11.92a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
-        (31) 98485-0095
-      </a>
-      <a href="https://linkedin.com/in/gabrielmp25" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        linkedin.com/in/gabrielmp25
-      </a>
-      <a href="https://www.instagram.com/euestougabrielmichell/" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        @euestougabrielmichell
-      </a>
-      <span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        Belo Horizonte, MG
-      </span>
-    </div>
-    <a href="curriculo-gabriel-paes.pdf" download class="btn-download-pdf">
-      📄 Descarregar Currículo & Cartas em PDF
-    </a>
-  </div>
-</header>
-
-<!-- MAIN CONTENT -->
-<main class="page">
-
-  <!-- LEFT COLUMN -->
-  <div>
-
-    <!-- Perfil Profissional -->
-    <div class="card">
-      <p class="section-label">Perfil Profissional</p>
-      <p class="profile-text">Profissional multidisciplinar com experiência em gestão pública, turismo, comunicação, relacionamento, produção, consultoria e desenvolvimento humano. Reúne atenção a detalhes, análise crítica, clareza na comunicação, organização e foco na experiência do usuário.</p>
-      <p class="profile-text" style="margin-top:12px">Busca oportunidades remotas para testar, avaliar e contribuir com a melhoria de ferramentas de inteligência artificial, oferecendo feedback claro e estruturado. Disposição para aprender novas plataformas e processos.</p>
-    </div>
-
-    <!-- Experiência -->
-    <div class="card">
-      <p class="section-label">Experiência Profissional</p>
-      <ul class="exp-list">
-        <li class="exp-item">
-          <div class="exp-role">Gestor Interino</div>
-          <div class="exp-company">IGR Serra do Cipó</div>
-          <div class="exp-period">out. 2025 — presente</div>
-          <div class="exp-desc">Coordenação de ações estratégicas de desenvolvimento turístico regional, articulando municípios e parceiros. Organização de iniciativas para fortalecimento do destino Serra do Cipó.</div>
-        </li>
-        <li class="exp-item">
-          <div class="exp-role">Diretor de Turismo</div>
-          <div class="exp-company">Prefeitura de Conceição do Mato Dentro</div>
-          <div class="exp-period">mai. 2023 — set. 2026</div>
-          <div class="exp-desc">Liderança da promoção e divulgação do turismo municipal por meio de campanhas e parcerias institucionais. Atuação no posicionamento do destino, retomada da habilitação ao ICMS Turístico e articulação com o Circuito Turístico Parque Nacional da Serra do Cipó.</div>
-        </li>
-        <li class="exp-item">
-          <div class="exp-role">Inside Sales</div>
-          <div class="exp-company">Midhaz</div>
-          <div class="exp-period">2019</div>
-          <div class="exp-desc">Atendimento, comunicação comercial, relacionamento e acompanhamento de oportunidades.</div>
-        </li>
-        <li class="exp-item">
-          <div class="exp-role">Gerente de Produção</div>
-          <div class="exp-company">Finestre Bianca</div>
-          <div class="exp-period">2014 — 2017</div>
-          <div class="exp-desc">Organização da produção, coordenação e acompanhamento de processos. Interface com pessoas e fornecedores durante a execução das atividades.</div>
-        </li>
-        <li class="exp-item">
-          <div class="exp-role">Consultor</div>
-          <div class="exp-company">Asas Turismo e Viagens</div>
-          <div class="exp-period">2013 — 2014</div>
-        </li>
-        <li class="exp-item">
-          <div class="exp-role">Consultor</div>
-          <div class="exp-company">Multitour Viagens e Turismo</div>
-          <div class="exp-period">2012</div>
-        </li>
-        <li class="exp-item">
-          <div class="exp-role">Consultor Empresarial</div>
-          <div class="exp-company">Bravo Viagens Lufthansa City Center</div>
-          <div class="exp-period">2011 — 2012</div>
-        </li>
-        <li class="exp-item">
-          <div class="exp-role">Relações Públicas</div>
-          <div class="exp-company">IPAM</div>
-          <div class="exp-period">2009</div>
-        </li>
-        <li class="exp-item">
-          <div class="exp-role">Freelancer</div>
-          <div class="exp-company">Del Dracco · Europa</div>
-          <div class="exp-period">2009 — 2010</div>
-        </li>
-        <li class="exp-item">
-          <div class="exp-role">Estagiário</div>
-          <div class="exp-company">WS Viagens e Turismo</div>
-          <div class="exp-period">2007</div>
-        </li>
-        <li class="exp-item">
-          <div class="exp-role">Promoter</div>
-          <div class="exp-company">Café Matisse CIC</div>
-          <div class="exp-period">2005 — 2006</div>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- RIGHT COLUMN -->
-  <div>
-
-    <!-- Competências -->
-    <div class="card">
-      <p class="section-label">Competências-Chave</p>
-      <div class="skill-grid">
-        <div class="skill-item">
-          <div class="skill-name">Análise e Revisão</div>
-          <div class="skill-desc">Atenção a detalhes, análise crítica, revisão de conteúdo e experiência do usuário.</div>
+  <!-- ===== HERO SECTION ===== -->
+  <header class="hero" role="banner">
+    <div class="hero-content">
+      <!-- Left: Text Content -->
+      <div class="hero-text">
+        <div class="hero-badge" aria-label="Disponível para oportunidades remotas">
+          <span aria-hidden="true"></span>
+          Disponível para oportunidades remotas
         </div>
-        <div class="skill-item">
-          <div class="skill-name">Comunicação e Relacionamento</div>
-          <div class="skill-desc">Clareza na comunicação, atendimento, relações públicas e acompanhamento de oportunidades.</div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name">Organização e Processos</div>
-          <div class="skill-desc">Gestão pública, gestão de projetos, liderança, organização e produção.</div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name">Conteúdo e Posicionamento</div>
-          <div class="skill-desc">Criação de conteúdo, marketing digital e adaptação da mensagem ao público.</div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name">Turismo e Governança</div>
-          <div class="skill-desc">Promoção de destinos, consultoria e articulação de parceiros em governança regional.</div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name">Avaliação e Adaptabilidade</div>
-          <div class="skill-desc">Feedback estruturado, cumprimento de processos e aprendizado de novas ferramentas.</div>
+        <h1 class="hero-name">Gabriel Michell <span>Paes</span></h1>
+        <p class="hero-title">Gestão · Comunicação · Avaliação de Ferramentas de IA</p>
+        <p class="hero-description">
+          Profissional multidisciplinar com experiência em gestão pública, turismo, comunicação, relacionamento, produção, consultoria e desenvolvimento humano. Busco oportunidades remotas para testar, avaliar e contribuir com a melhoria de ferramentas de inteligência artificial, oferecendo feedback claro e estruturado.
+        </p>
+        <div class="hero-contacts" role="list" aria-label="Informações de contato">
+          <a href="mailto:gabrielmichellpaes@gmail.com" class="contact-btn" role="listitem" aria-label="Enviar e-mail para gabrielmichellpaes@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>gabrielmichellpaes@gmail.com</span>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=5531984850095" target="_blank" rel="noopener noreferrer" class="contact-btn" role="listitem" aria-label="Conversar no WhatsApp (31) 98485-0095">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 11.92a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+            <span>(31) 98485-0095</span>
+          </a>
+          <a href="https://linkedin.com/in/gabrielmp25" target="_blank" rel="noopener" class="contact-btn" role="listitem" aria-label="Perfil no LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <span>linkedin.com/in/gabrielmp25</span>
+          </a>
+          <a href="https://www.instagram.com/euestougabrielmichell/" target="_blank" rel="noopener" class="contact-btn" role="listitem" aria-label="Perfil no Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <span>@euestougabrielmichell</span>
+          </a>
+          <span class="contact-btn" role="listitem" aria-label="Localização: Belo Horizonte, MG">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Belo Horizonte, MG</span>
+          </span>
+          <a href="curriculo-gabriel-paes.pdf" download class="contact-btn primary" role="listitem" aria-label="Baixar Currículo e Cartas de Recomendação em PDF">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Baixar Currículo & Cartas (PDF)</span>
+          </a>
         </div>
       </div>
-    </div>
 
-    <!-- Formação -->
-    <div class="card">
-      <p class="section-label">Formação Acadêmica</p>
-      <div class="edu-item">
-        <div class="edu-degree">Bacharel em Turismo — Gestão Empresarial</div>
-        <div class="edu-institution">FUMEC</div>
-        <div class="edu-period">2007 — 2011</div>
-      </div>
-      <div class="edu-item">
-        <div class="edu-degree">Science of Consumer / Marketing Internacional</div>
-        <div class="edu-institution">IPAM</div>
-        <div class="edu-period">2008 — 2009</div>
-      </div>
-      <div class="edu-item">
-        <div class="edu-degree">Fundamentos da Experiência do Cliente</div>
-        <div class="edu-institution">Moving Up</div>
-      </div>
-    </div>
-
-    <!-- Ferramentas -->
-    <div class="card">
-      <p class="section-label">Ferramentas Digitais & IA</p>
-      <div class="tag-list">
-        <span class="tag">ChatGPT</span>
-        <span class="tag">Claude</span>
-        <span class="tag">Gemini</span>
-        <span class="tag">Canva</span>
-        <span class="tag">Suno</span>
-        <span class="tag">Flow</span>
-        <span class="tag">Notion</span>
-        <span class="tag">Trello</span>
-        <span class="tag">Word</span>
-        <span class="tag">Excel</span>
-        <span class="tag">PowerPoint</span>
-      </div>
-    </div>
-
-    <!-- Idiomas -->
-    <div class="card">
-      <p class="section-label">Idiomas</p>
-      <div class="lang-item">
-        <span>Português</span><span class="lang-level">Nativo</span>
-      </div>
-      <div class="lang-item">
-        <span>Espanhol</span><span class="lang-level">Intermediário</span>
-      </div>
-      <div class="lang-item">
-        <span>Inglês</span><span class="lang-level">Intermediário</span>
-      </div>
-    </div>
-
-    <!-- Extra -->
-    <div class="card">
-      <p class="section-label">Informação Complementar</p>
-      <p style="font-size:0.88rem; color:#7D7A75;">🧘 Professor de Yoga e Meditação desde 2016, com prática contínua.</p>
-    </div>
-
-  </div>
-</main>
-
-<!-- Cartas de Recomendação -->
-<section style="background:var(--surface);padding:0 24px 64px;">
-  <div style="max-width:900px;margin:0 auto;">
-    <p style="font-size:0.72rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#2783DE;margin-bottom:24px;">Cartas de Recomendação</p>
-    <div style="display:grid;gap:24px;">
-
-      <!-- Carta 1: Rejane Ottoni -->
-      <div class="card" style="padding:40px;margin-bottom:0;">
-        <div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:28px;">
-          <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:#E5F2FC;display:flex;align-items:center;justify-content:center;font-weight:700;color:#2783DE;font-size:1rem;">RO</div>
-          <div>
-            <div style="font-weight:700;font-size:1rem;color:#2C2C2B;">Rejane Ottoni Santa Bárbara</div>
-            <div style="color:#7D7A75;font-size:0.85rem;margin-top:3px;">Secretaria Municipal de Turismo · Conceição do Mato Dentro, MG</div>
-            <div style="color:#7D7A75;font-size:0.82rem;margin-top:2px;">7 de outubro de 2026</div>
+      <!-- Right: Avatar Card -->
+      <div class="hero-avatar-wrapper" aria-hidden="true">
+        <div class="hero-avatar-card">
+          <img
+            src="foto.jpg"
+            alt="Gabriel Michell Paes"
+            class="hero-avatar"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="hero-avatar-fallback" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+            <span>Gabriel Michell Paes</span>
           </div>
         </div>
-        <div style="color:#4a4a48;font-size:0.95rem;line-height:1.8;border-left:3px solid #E5F2FC;padding-left:20px;">
-          <p style="margin-bottom:14px;">É com grande satisfação que recomendo o profissional <strong>Gabriel Michell Paes</strong>, cuja trajetória no setor público tive a honra de iniciar e acompanhar diretamente na Secretaria Municipal de Turismo de Conceição do Mato Dentro.</p>
-          <p style="margin-bottom:14px;">Gabriel integrou a equipe sob minha gestão, atuando na estruturação, promoção e divulgação do turismo do nosso município. Desde o início de suas atividades, destacou-se pelo comprometimento, sólida competência técnica e sensibilidade no relacionamento com a comunidade local, o trade turístico e instituições parceiras.</p>
-          <p style="margin-bottom:14px;">Durante nosso período de trabalho em conjunto, demonstrou proatividade, postura ética exemplar, facilidade para trabalhar em equipe e dedicação no desenvolvimento de ações e políticas públicas voltadas ao fortalecimento do turismo regional.</p>
-          <p>Diante do seu histórico de dedicação e resultados, recomendo Gabriel Michell Paes com total segurança para novos desafios e oportunidades profissionais na gestão pública, turismo e áreas afins.</p>
-        </div>
-        <div style="margin-top:24px;padding-top:20px;border-top:1px solid #E6E5E3;display:flex;align-items:center;gap:10px;">
-          <span style="font-size:0.8rem;color:#7D7A75;">✅ Documento assinado digitalmente via gov.br · Verificável em validar.iti.gov.br</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main role="main">
+    <!-- Professional Profile -->
+    <section class="section" aria-labelledby="profile-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="profile-title" class="section-title">Perfil Profissional</h2>
+        </header>
+        <div class="carousel">
+          <div class="carousel-track" role="list" aria-label="Cartões de perfil profissional">
+            <article class="carousel-card featured" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <span class="card-tag">Resumo Profissional</span>
+              <h3 class="card-title">Profissional Multidisciplinar</h3>
+              <p class="card-description">
+                Experiência em gestão pública, turismo, comunicação, relacionamento, produção, consultoria e desenvolvimento humano. Reúno atenção a detalhes, análise crítica, clareza na comunicação, organização e foco na experiência do usuário.
+              </p>
+              <div class="card-divider"></div>
+              <p class="card-description" style="margin-top: 0;">
+                Busco oportunidades remotas para testar, avaliar e contribuir com a melhoria de ferramentas de inteligência artificial, oferecendo feedback claro e estruturado. Tenho disposição para aprender novas plataformas e processos.
+              </p>
+            </article>
+            <article class="carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <span class="card-tag">Foco Atual</span>
+              <h3 class="card-title">Avaliação de Ferramentas de IA</h3>
+              <p class="card-description">
+                Interesse especial em testar e avaliar ferramentas de inteligência artificial (LLMs, agentes, automações), contribuindo com feedback estruturado para melhoria de produtos e experiência do usuário.
+              </p>
+            </article>
+            <article class="carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <span class="card-tag">Disponibilidade</span>
+              <h3 class="card-title">Remoto · Tempo Integral</h3>
+              <p class="card-description">
+                Disponível para atuação remota em projetos de gestão de produto, qualidade de IA, pesquisa de usuário, comunicação técnica ou coordenação de projetos. Flexibilidade de fuso horário.
+              </p>
+            </article>
+          </div>
+          <button class="carousel-nav prev" aria-label="Cartão anterior" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-nav next" aria-label="Próximo cartão" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
       </div>
+    </section>
 
-      <!-- Carta 2: Gustavo Henrique -->
-      <div class="card" style="padding:40px;margin-bottom:0;">
-        <div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:28px;">
-          <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:#E5F2FC;display:flex;align-items:center;justify-content:center;font-weight:700;color:#2783DE;font-size:1rem;">GH</div>
-          <div>
-            <div style="font-weight:700;font-size:1rem;color:#2C2C2B;">Gustavo Henrique Meijon de Souza Campos</div>
-            <div style="color:#7D7A75;font-size:0.85rem;margin-top:3px;">Secretário Municipal de Turismo · Prefeitura Municipal de Conceição do Mato Dentro, MG</div>
-            <div style="color:#7D7A75;font-size:0.82rem;margin-top:2px;">7 de outubro de 2026</div>
+    <!-- Professional Experience -->
+    <section class="section" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="experience-title" class="section-title">Experiência Profissional</h2>
+          <span class="section-subtitle">13 anos de trajetória</span>
+        </header>
+        <div class="carousel">
+          <div class="carousel-track" role="list" aria-label="Experiências profissionais">
+            <!-- Current Roles -->
+            <article class="exp-card carousel-card current" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <span class="card-tag">Atual · Gestão Pública</span>
+              <h3 class="card-title">Gestor Interino</h3>
+              <p class="card-subtitle">IGR Serra do Cipó</p>
+              <p class="card-period">Out. 2025 — Presente</p>
+              <p class="card-description">
+                Coordenação de ações estratégicas de desenvolvimento turístico regional, articulando municípios e parceiros. Organização de iniciativas para fortalecimento do destino Serra do Cipó.
+              </p>
+            </article>
+
+            <article class="exp-card carousel-card current" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <span class="card-tag">Atual · Gestão Pública</span>
+              <h3 class="card-title">Diretor de Turismo</h3>
+              <p class="card-subtitle">Prefeitura de Conceição do Mato Dentro</p>
+              <p class="card-period">Mai. 2023 — Set. 2026</p>
+              <p class="card-description">
+                Liderança da promoção e divulgação do turismo municipal por meio de campanhas e parcerias institucionais. Atuação no posicionamento do destino, retomada da habilitação ao ICMS Turístico e articulação com o Circuito Turístico Parque Nacional da Serra do Cipó.
+              </p>
+            </article>
+
+            <!-- Previous Roles -->
+            <article class="exp-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
+              <span class="card-tag">Vendas · Comunicação</span>
+              <h3 class="card-title">Inside Sales</h3>
+              <p class="card-subtitle">Midhaz</p>
+              <p class="card-period">2019</p>
+              <p class="card-description">
+                Atendimento, comunicação comercial, relacionamento e acompanhamento de oportunidades.
+              </p>
+            </article>
+
+            <article class="exp-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+              </div>
+              <span class="card-tag">Produção · Gestão</span>
+              <h3 class="card-title">Gerente de Produção</h3>
+              <p class="card-subtitle">Finestre Bianca</p>
+              <p class="card-period">2014 — 2017</p>
+              <p class="card-description">
+                Organização da produção, coordenação e acompanhamento de processos. Interface com pessoas e fornecedores durante a execução das atividades.
+              </p>
+            </article>
+
+            <article class="exp-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="card-tag">Turismo · Consultoria</span>
+              <h3 class="card-title">Consultor</h3>
+              <p class="card-subtitle">Asas Turismo e Viagens</p>
+              <p class="card-period">2013 — 2014</p>
+            </article>
+
+            <article class="exp-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="card-tag">Turismo · Consultoria</span>
+              <h3 class="card-title">Consultor</h3>
+              <p class="card-subtitle">Multitour Viagens e Turismo</p>
+              <p class="card-period">2012</p>
+            </article>
+
+            <article class="exp-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="card-tag">Turismo · Corporate</span>
+              <h3 class="card-title">Consultor Empresarial</h3>
+              <p class="card-subtitle">Bravo Viagens Lufthansa City Center</p>
+              <p class="card-period">2011 — 2012</p>
+            </article>
+
+            <article class="exp-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="card-tag">Relações Públicas</span>
+              <h3 class="card-title">Relações Públicas</h3>
+              <p class="card-subtitle">IPAM</p>
+              <p class="card-period">2009</p>
+            </article>
+
+            <article class="exp-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="card-tag">Europa · Freelance</span>
+              <h3 class="card-title">Freelancer</h3>
+              <p class="card-subtitle">Del Dracco · Europa</p>
+              <p class="card-period">2009 — 2010</p>
+            </article>
+
+            <article class="exp-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="card-tag">Início de Carreira</span>
+              <h3 class="card-title">Estagiário</h3>
+              <p class="card-subtitle">WS Viagens e Turismo</p>
+              <p class="card-period">2007</p>
+            </article>
+
+            <article class="exp-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="card-tag">Início de Carreira</span>
+              <h3 class="card-title">Promoter</h3>
+              <p class="card-subtitle">Café Matisse CIC</p>
+              <p class="card-period">2005 — 2006</p>
+            </article>
+          </div>
+          <button class="carousel-nav prev" aria-label="Experiência anterior" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-nav next" aria-label="Próxima experiência" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Competencies -->
+    <section class="section" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="skills-title" class="section-title">Competências-Chave</h2>
+          <span class="section-subtitle">6 áreas principais</span>
+        </header>
+        <div class="carousel">
+          <div class="carousel-track" role="list" aria-label="Competências profissionais">
+            <article class="skill-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/><path d="M12 18H6"/></svg>
+              </div>
+              <h3 class="card-title">Análise e Revisão</h3>
+              <p class="card-description">Atenção a detalhes, análise crítica, revisão de conteúdo e experiência do usuário.</p>
+            </article>
+            <article class="skill-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <h3 class="card-title">Comunicação e Relacionamento</h3>
+              <p class="card-description">Clareza na comunicação, atendimento, relações públicas e acompanhamento de oportunidades.</p>
+            </article>
+            <article class="skill-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <h3 class="card-title">Organização e Processos</h3>
+              <p class="card-description">Gestão pública, gestão de projetos, liderança, organização e produção.</p>
+            </article>
+            <article class="skill-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <h3 class="card-title">Conteúdo e Posicionamento</h3>
+              <p class="card-description">Criação de conteúdo, marketing digital e adaptação da mensagem ao público.</p>
+            </article>
+            <article class="skill-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <h3 class="card-title">Turismo e Governança</h3>
+              <p class="card-description">Promoção de destinos, consultoria e articulação de parceiros em governança regional.</p>
+            </article>
+            <article class="skill-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3 class="card-title">Avaliação e Adaptabilidade</h3>
+              <p class="card-description">Feedback estruturado, cumprimento de processos e aprendizado de novas ferramentas.</p>
+            </article>
+          </div>
+          <button class="carousel-nav prev" aria-label="Competência anterior" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-nav next" aria-label="Próxima competência" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Formation -->
+    <section class="section" aria-labelledby="education-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="education-title" class="section-title">Formação Acadêmica</h2>
+          <span class="section-subtitle">Graduação e especializações</span>
+        </header>
+        <div class="carousel">
+          <div class="carousel-track" role="list" aria-label="Formação acadêmica">
+            <article class="edu-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6"/><path d="M6 12h12"/><path d="M6 16h12"/><path d="M6 8h12"/></svg>
+              </div>
+              <span class="card-tag">Graduação</span>
+              <h3 class="card-title">Bacharel em Turismo — Gestão Empresarial</h3>
+              <p class="card-subtitle">FUMEC</p>
+              <p class="card-period">2007 — 2011</p>
+            </article>
+            <article class="edu-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6"/><path d="M6 12h12"/><path d="M6 16h12"/><path d="M6 8h12"/></svg>
+              </div>
+              <span class="card-tag">Especialização Internacional</span>
+              <h3 class="card-title">Science of Consumer / Marketing Internacional</h3>
+              <p class="card-subtitle">IPAM</p>
+              <p class="card-period">2008 — 2009</p>
+            </article>
+            <article class="edu-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6"/><path d="M6 12h12"/><path d="M6 16h12"/><path d="M6 8h12"/></svg>
+              </div>
+              <span class="card-tag">Curso de Extensão</span>
+              <h3 class="card-title">Fundamentos da Experiência do Cliente</h3>
+              <p class="card-subtitle">Moving Up</p>
+            </article>
+          </div>
+          <button class="carousel-nav prev" aria-label="Formação anterior" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-nav next" aria-label="Próxima formação" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Digital Tools & AI -->
+    <section class="section" aria-labelledby="tools-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="tools-title" class="section-title">Ferramentas Digitais & IA</h2>
+          <span class="section-subtitle">11 ferramentas dominadas</span>
+        </header>
+        <div class="tools-grid" role="list" aria-label="Ferramentas e tecnologias">
+          <span class="tool-tag ai-tool" role="listitem" aria-label="ChatGPT - Inteligência Artificial">ChatGPT</span>
+          <span class="tool-tag ai-tool" role="listitem" aria-label="Claude - Inteligência Artificial">Claude</span>
+          <span class="tool-tag ai-tool" role="listitem" aria-label="Gemini - Inteligência Artificial">Gemini</span>
+          <span class="tool-tag" role="listitem" aria-label="Canva - Design">Canva</span>
+          <span class="tool-tag ai-tool" role="listitem" aria-label="Suno - IA para áudio">Suno</span>
+          <span class="tool-tag" role="listitem" aria-label="Flow - Produtividade">Flow</span>
+          <span class="tool-tag" role="listitem" aria-label="Notion - Organização">Notion</span>
+          <span class="tool-tag" role="listitem" aria-label="Trello - Gestão de projetos">Trello</span>
+          <span class="tool-tag" role="listitem" aria-label="Word - Microsoft Office">Word</span>
+          <span class="tool-tag" role="listitem" aria-label="Excel - Microsoft Office">Excel</span>
+          <span class="tool-tag" role="listitem" aria-label="PowerPoint - Microsoft Office">PowerPoint</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages -->
+    <section class="section" aria-labelledby="languages-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="languages-title" class="section-title">Idiomas</h2>
+          <span class="section-subtitle">3 idiomas</span>
+        </header>
+        <div class="carousel">
+          <div class="carousel-track" role="list" aria-label="Idiomas">
+            <article class="lang-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <h3 class="card-title">Português</h3>
+              <span class="lang-level">Nativo</span>
+            </article>
+            <article class="lang-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <h3 class="card-title">Espanhol</h3>
+              <span class="lang-level">Intermediário</span>
+            </article>
+            <article class="lang-card carousel-card" role="listitem">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <h3 class="card-title">Inglês</h3>
+              <span class="lang-level">Intermediário</span>
+            </article>
+          </div>
+          <button class="carousel-nav prev" aria-label="Idioma anterior" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-nav next" aria-label="Próximo idioma" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Complementary Information -->
+    <section class="section" aria-labelledby="extra-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="extra-title" class="section-title">Informação Complementar</h2>
+        </header>
+        <div class="carousel">
+          <div class="carousel-track" role="list" aria-label="Informações complementares">
+            <article class="carousel-card featured" role="listitem" style="max-width: 600px; margin: 0 auto;">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <span class="card-tag">Desenvolvimento Humano</span>
+              <h3 class="card-title">Professor de Yoga e Meditação</h3>
+              <p class="card-period">Desde 2016 · Prática contínua</p>
+              <div class="card-divider"></div>
+              <p class="card-description">
+                Atuação como professor de Yoga e Meditação desde 2016, com prática contínua. Essa experiência complementar desenvolve habilidades de foco, gestão de estresse, comunicação empática e liderança consciente — competências transferíveis para ambientes corporativos e de produto.
+              </p>
+            </article>
           </div>
         </div>
-        <div style="color:#4a4a48;font-size:0.95rem;line-height:1.8;border-left:3px solid #E5F2FC;padding-left:20px;">
-          <p style="margin-bottom:14px;">Na qualidade de Secretário Municipal de Turismo de Conceição do Mato Dentro, tenho a satisfação de recomendar <strong>Gabriel Michell Paes</strong>, que exerceu a função de Chefe do Departamento de Promoção e Divulgação do Turismo entre maio de 2023 e setembro de 2026, atuando diretamente sob minha gestão a partir de janeiro de 2025.</p>
-          <p style="margin-bottom:14px;">Durante esse período, Gabriel demonstrou comprometimento, responsabilidade e competência técnica, contribuindo significativamente para o fortalecimento das políticas públicas de turismo e para a organização institucional do setor.</p>
-          <p style="margin-bottom:14px;">Destaco especialmente seu conhecimento e acompanhamento das <strong>políticas públicas estaduais e nacionais de turismo</strong>, sua atuação na adequação do município às diretrizes e exigências governamentais e sua importante contribuição para a <strong>retomada da habilitação de Conceição do Mato Dentro ao ICMS Turístico</strong>.</p>
-          <p style="margin-bottom:14px;">Ressalto também sua participação nas articulações com o <strong>Circuito Turístico Parque Nacional da Serra do Cipó</strong>, no fortalecimento da governança regional e no desenvolvimento de iniciativas de planejamento, promoção e estruturação do destino turístico.</p>
-          <p style="margin-bottom:14px;">Além de suas competências técnicas, Gabriel demonstrou espírito colaborativo, ética profissional, capacidade de relacionamento institucional e atenção às demandas da equipe, do setor turístico e da comunidade.</p>
-          <p>Por sua dedicação, conhecimento e contribuição à Secretaria Municipal de Turismo, <strong>recomendo Gabriel Michell Paes com confiança</strong>, reconhecendo sua aptidão para assumir novos desafios profissionais nas áreas de gestão pública, políticas de turismo e desenvolvimento turístico regional.</p>
+      </div>
+    </section>
+
+    <!-- Recommendation Letters -->
+    <section class="section" aria-labelledby="letters-title" style="background: linear-gradient(180deg, var(--bg-black) 0%, var(--bg-dark) 100%);">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="letters-title" class="section-title">Cartas de Recomendação</h2>
+          <span class="section-subtitle">Documentos oficiais assinados digitalmente via gov.br</span>
+        </header>
+        <div class="letters-grid" role="list" aria-label="Cartas de recomendação">
+          <!-- Letter 1: Rejane Ottoni -->
+          <article class="letter-card" role="listitem">
+            <div class="letter-header">
+              <div class="letter-avatar" aria-hidden="true">RO</div>
+              <div class="letter-meta">
+                <h4>Rejane Ottoni Santa Bárbara</h4>
+                <p class="letter-role">Secretaria Municipal de Turismo · Conceição do Mato Dentro, MG</p>
+                <p class="letter-date">7 de outubro de 2026</p>
+              </div>
+            </div>
+            <div class="letter-content">
+              <p>É com grande satisfação que recomendo o profissional <strong>Gabriel Michell Paes</strong>, cuja trajetória no setor público tive a honra de iniciar e acompanhar diretamente na Secretaria Municipal de Turismo de Conceição do Mato Dentro.</p>
+              <p>Gabriel integrou a equipe sob minha gestão, atuando na estruturação, promoção e divulgação do turismo do nosso município. Desde o início de suas atividades, destacou-se pelo comprometimento, sólida competência técnica e sensibilidade no relacionamento com a comunidade local, o trade turístico e instituições parceiras.</p>
+              <p>Durante nosso período de trabalho em conjunto, demonstrou proatividade, postura ética exemplar, facilidade para trabalhar em equipe e dedicação no desenvolvimento de ações e políticas públicas voltadas ao fortalecimento do turismo regional.</p>
+              <p>Diante do seu histórico de dedicação e resultados, recomendo Gabriel Michell Paes com total segurança para novos desafios e oportunidades profissionais na gestão pública, turismo e áreas afins.</p>
+            </div>
+            <div class="letter-footer">
+              ✅ Documento assinado digitalmente via gov.br · Verificável em <a href="https://validar.iti.gov.br" target="_blank" rel="noopener">validar.iti.gov.br</a>
+            </div>
+          </article>
+
+          <!-- Letter 2: Gustavo Henrique -->
+          <article class="letter-card" role="listitem">
+            <div class="letter-header">
+              <div class="letter-avatar" aria-hidden="true">GH</div>
+              <div class="letter-meta">
+                <h4>Gustavo Henrique Meijon de Souza Campos</h4>
+                <p class="letter-role">Secretário Municipal de Turismo · Prefeitura Municipal de Conceição do Mato Dentro, MG</p>
+                <p class="letter-date">7 de outubro de 2026</p>
+              </div>
+            </div>
+            <div class="letter-content">
+              <p>Na qualidade de Secretário Municipal de Turismo de Conceição do Mato Dentro, tenho a satisfação de recomendar <strong>Gabriel Michell Paes</strong>, que exerceu a função de Chefe do Departamento de Promoção e Divulgação do Turismo entre maio de 2023 e setembro de 2026, atuando diretamente sob minha gestão a partir de janeiro de 2025.</p>
+              <p>Durante esse período, Gabriel demonstrou comprometimento, responsabilidade e competência técnica, contribuindo significativamente para o fortalecimento das políticas públicas de turismo e para a organização institucional do setor.</p>
+              <p>Destaco especialmente seu conhecimento e acompanhamento das <strong>políticas públicas estaduais e nacionais de turismo</strong>, sua atuação na adequação do município às diretrizes e exigências governamentais e sua importante contribuição para a <strong>retomada da habilitação de Conceição do Mato Dentro ao ICMS Turístico</strong>.</p>
+              <p>Ressalto também sua participação nas articulações com o <strong>Circuito Turístico Parque Nacional da Serra do Cipó</strong>, no fortalecimento da governança regional e no desenvolvimento de iniciativas de planejamento, promoção e estruturação do destino turístico.</p>
+              <p>Além de suas competências técnicas, Gabriel demonstrou espírito colaborativo, ética profissional, capacidade de relacionamento institucional e atenção às demandas da equipe, do setor turístico e da comunidade.</p>
+              <p>Por sua dedicação, conhecimento e contribuição à Secretaria Municipal de Turismo, <strong>recomendo Gabriel Michell Paes com confiança</strong>, reconhecendo sua aptidão para assumir novos desafios profissionais nas áreas de gestão pública, políticas de turismo e desenvolvimento turístico regional.</p>
+            </div>
+            <div class="letter-footer">
+              Prefeitura Municipal de Conceição do Mato Dentro · Rua Daniel de Carvalho, 161 - Centro · (31) 3868-1169 · <a href="https://cmd.mg.gov.br" target="_blank" rel="noopener">cmd.mg.gov.br</a>
+            </div>
+          </article>
         </div>
-        <div style="margin-top:24px;padding-top:20px;border-top:1px solid #E6E5E3;">
-          <div style="font-size:0.82rem;color:#7D7A75;">Prefeitura Municipal de Conceição do Mato Dentro · Rua Daniel de Carvalho, 161 - Centro · (31) 3868-1169 · cmd.mg.gov.br</div>
+
+        <!-- Download button at bottom of letters section -->
+        <div style="text-align: center; margin-top: var(--space-xl);">
+          <a href="curriculo-gabriel-paes.pdf" download class="contact-btn primary" style="font-size: var(--font-size-base); padding: var(--space-md) var(--space-2xl);" aria-label="Baixar Currículo e Cartas de Recomendação completas em PDF">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Baixar Currículo & Cartas Completas (PDF)</span>
+          </a>
         </div>
       </div>
+    </section>
+  </main>
 
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">Gabriel Michell Paes</div>
+        <nav class="footer-links" aria-label="Links de contato">
+          <a href="mailto:gabrielmichellpaes@gmail.com" class="footer-link" aria-label="E-mail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            gabrielmichellpaes@gmail.com
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=5531984850095" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 11.92a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+            (31) 98485-0095
+          </a>
+          <a href="https://linkedin.com/in/gabrielmp25" target="_blank" rel="noopener" class="footer-link" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.instagram.com/euestougabrielmichell/" target="_blank" rel="noopener" class="footer-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>Desenvolvido com <span style="color: var(--primary-blue);" aria-hidden="true">♥</span> · Hospedado no GitHub Pages · © 2026 Gabriel Michell Paes</p>
+      </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<footer>
-  <p>Gabriel Michell Paes · Belo Horizonte, MG · <a href="mailto:gabrielmichellpaes@gmail.com">gabrielmichellpaes@gmail.com</a></p>
-</footer>
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" aria-label="Voltar ao topo" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ===== CAROUSEL NAVIGATION =====
+      function initCarousels() {
+        const carousels = document.querySelectorAll('.carousel');
+
+        carousels.forEach(carousel => {
+          const track = carousel.querySelector('.carousel-track');
+          const prevBtn = carousel.querySelector('.carousel-nav.prev');
+          const nextBtn = carousel.querySelector('.carousel-nav.next');
+
+          if (!track || !prevBtn || !nextBtn) return;
+
+          const scrollAmount = () => {
+            const card = track.querySelector('.carousel-card');
+            if (!card) return 320;
+            const style = getComputedStyle(card);
+            const gap = parseInt(getComputedStyle(track).gap) || 16;
+            return card.offsetWidth + gap;
+          };
+
+          const scrollTo = (direction) => {
+            track.scrollBy({ left: direction * scrollAmount(), behavior: 'smooth' });
+          };
+
+          prevBtn.addEventListener('click', () => scrollTo(-1));
+          nextBtn.addEventListener('click', () => scrollTo(1));
+
+          // Keyboard navigation
+          prevBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollTo(-1); }
+          });
+          nextBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollTo(1); }
+          });
+
+          // Update button visibility based on scroll position
+          const updateNavVisibility = () => {
+            const { scrollLeft, scrollWidth, clientWidth } = track;
+            const threshold = 10;
+
+            prevBtn.style.opacity = scrollLeft > threshold ? '1' : '0';
+            prevBtn.style.pointerEvents = scrollLeft > threshold ? 'auto' : 'none';
+
+            nextBtn.style.opacity = (scrollLeft + clientWidth) < (scrollWidth - threshold) ? '1' : '0';
+            nextBtn.style.pointerEvents = (scrollLeft + clientWidth) < (scrollWidth - threshold) ? 'auto' : 'none';
+          };
+
+          track.addEventListener('scroll', updateNavVisibility, { passive: true });
+
+          // Initial check
+          setTimeout(updateNavVisibility, 100);
+
+          // Recheck on resize
+          window.addEventListener('resize', updateNavVisibility);
+        });
+      }
+
+      // ===== BACK TO TOP BUTTON =====
+      function initBackToTop() {
+        const btn = document.querySelector('.back-to-top');
+        if (!btn) return;
+
+        const toggleVisibility = () => {
+          if (window.scrollY > 300) {
+            btn.classList.add('visible');
+            btn.setAttribute('aria-hidden', 'false');
+          } else {
+            btn.classList.remove('visible');
+            btn.setAttribute('aria-hidden', 'true');
+          }
+        };
+
+        window.addEventListener('scroll', toggleVisibility, { passive: true });
+        btn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Initial check
+        toggleVisibility();
+      }
+
+      // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const target = document.querySelector(targetId);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              target.focus({ preventScroll: true });
+            }
+          });
+        });
+      }
+
+      // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
+      function initScrollAnimations() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px 0px -10% 0px',
+          threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.animationPlayState = 'running';
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        // Observe sections for fade-in
+        document.querySelectorAll('.section').forEach(section => {
+          section.style.opacity = '0';
+          section.style.transform = 'translateY(20px)';
+          section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          section.style.animationPlayState = 'paused';
+          observer.observe(section);
+        });
+
+        // Trigger animation when intersected
+        const animationObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+              animationObserver.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+          animationObserver.observe(section);
+        });
+      }
+
+      // ===== HERO AVATAR ERROR HANDLING =====
+      function initAvatarFallback() {
+        const avatar = document.querySelector('.hero-avatar');
+        const fallback = document.querySelector('.hero-avatar-fallback');
+
+        if (avatar && fallback) {
+          avatar.addEventListener('error', () => {
+            avatar.style.display = 'none';
+            fallback.style.display = 'flex';
+          });
+        }
+      }
+
+      // ===== INITIALIZE ALL =====
+      function init() {
+        initCarousels();
+        initBackToTop();
+        initSmoothScroll();
+        initScrollAnimations();
+        initAvatarFallback();
+      }
+
+      // Run when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+      // Handle navigation for carousel buttons on mobile touch
+      let touchStartX = 0;
+      document.querySelectorAll('.carousel-track').forEach(track => {
+        track.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+          const touchEndX = e.changedTouches[0].clientX;
+          const diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 50) {
+            track.scrollBy({ left: diff > 0 ? 320 : -320, behavior: 'smooth' });
+          }
+        }, { passive: true });
+      });
+
+    })();
+  </script>
 </body>
 </html>
